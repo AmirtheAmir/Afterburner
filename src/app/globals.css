@@ -1,26 +1,142 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* Olive – Light backgrounds */
+  --olive-50:  #FEF1EF;
+  --olive-100: #E8EDEB;
+  --olive-200: #E2E8E5;
+  --olive-300: #D7E0DB;
+  /* Olive – Borders light */
+  --olive-500: #C0CEC7;
+  --olive-700: #9EB3A9;
+  /* Olive – Text light */
+  --olive-0:   #222B26;
+  --olive-950: #5A7266;
+  --olive-900: #9EB3A8;
+  /* Brand */
+  --teal-950: #0C413A;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Background */
+  --color-bg-base:          var(--olive-300);
+  --color-bg-surface:       var(--olive-200);
+  --color-bg-surface-hover: var(--olive-100);
+  --color-bg-elevated:      var(--olive-50);
+  /* Border */
+  --color-border-base:      var(--olive-700);
+  --color-border-secondary: var(--olive-500);
+  /* Text */
+  --color-text-primary:   var(--olive-0);
+  --color-text-secondary: var(--olive-950);
+  --color-text-tertiary:  var(--olive-900);
+  /* Brand */
+  --color-brand-primary: var(--teal-950);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @theme {
+    /* Olive – Dark backgrounds */
+    --olive-50:  #0F1010;
+    --olive-100: #131615;
+    --olive-200: #181B19;
+    --olive-300: #212624;
+    /* Olive – Borders dark */
+    --olive-500: #353B38;
+    --olive-700: #515C57;
+    /* Olive – Text dark */
+    --olive-0:   #D6DBD9;
+    --olive-950: #939F99;
+    --olive-900: #515C57;
+    /* Brand stays same */
+    --teal-950: #0C413A;
+
+    /* Background */
+    --color-bg-base:          var(--olive-50);
+    --color-bg-surface:       var(--olive-100);
+    --color-bg-surface-hover: var(--olive-200);
+    --color-bg-elevated:      var(--olive-300);
+    /* Border */
+    --color-border-base:      var(--olive-700);
+    --color-border-secondary: var(--olive-500);
+    /* Text */
+    --color-text-primary:   var(--olive-0);
+    --color-text-secondary: var(--olive-950);
+    --color-text-tertiary:  var(--olive-900);
+    /* Brand */
+    --color-brand-primary: var(--teal-950);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.font-l500 {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: 0em;
+}
+.font-l600 {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: 0em;
+}
+.font-m500 {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.44;
+  letter-spacing: 0em;
+}
+.font-m600 {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.44;
+  letter-spacing: 0em;
+}
+.font-s500 {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.005em;
+}
+.font-s600 {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.005em;
+}
+.font-xs500 {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.43;
+  letter-spacing: 0.01em;
+}
+.font-xs600 {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.43;
+  letter-spacing: 0.01em;
+}
+.font-2xs500 {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.01em;
+}
+.font-2xs600 {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.01em;
+}
+
+.rounded-5xl{
+  border-radius: 40px;
 }
