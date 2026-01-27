@@ -25,15 +25,37 @@ export const cars: Car[] = [
     imageSrc: "/images/tumbler.png",
   },
   {
-    id: "mach-five",
-    name: "Mach Five",
-    brand: "Speed Motors",
+    id: "delorean",
+    name: "DMC 12",
+    brand: "DeLorean",
     gear: "Manual",
-    priceUSD: 2800000,
-    color: "Pure White",
+    priceUSD: 150000,
+    color: "Stainless Steel",
     details:
-      "Iconic car from Speed Racer (1967 anime, 2008 film), Known for advanced gadgets.",
-    imageSrc: "/images/mach_five.png",
+      "First appeared in Back to the Future (1985), Modified into a time machine by Doc Brown.",
+    imageSrc: "/images/delorean.png",
+  },
+  {
+    id: "bvs",
+    name: "Batmobile",
+    brand: "Wayne Enterprises",
+    gear: "Auto",
+    priceUSD: 24950000,
+    color: "Matte Black",
+    details:
+      "Gained fame in Batman v Superman (2016), Built as a heavily armored tactical vehicle.",
+    imageSrc: "/images/batmobile.png",
+  },
+  {
+    id: "db5",
+    name: "DB5",
+    brand: "Aston Martin",
+    gear: "Manual",
+    priceUSD: 1650000,
+    color: "Silver Birch",
+    details:
+    "Famous from Goldfinger (1964), Became James Bond’s signature car.",
+    imageSrc: "/images/aston.png",
   },
   {
     id: "optimus",
@@ -47,28 +69,6 @@ export const cars: Car[] = [
     imageSrc: "/images/optimus.png",
   },
   {
-    id: "delorean",
-    name: "DMC-12",
-    brand: "DeLorean",
-    gear: "Manual",
-    priceUSD: 150000,
-    color: "Stainless Steel",
-    details:
-      "First appeared in Back to the Future (1985), Modified into a time machine by Doc Brown.",
-    imageSrc: "/images/delorean.png",
-  },
-  {
-    id: "db5",
-    name: "DB5",
-    brand: "Aston Martin",
-    gear: "Manual",
-    priceUSD: 1650000,
-    color: "Silver Birch",
-    details:
-      "Famous from Goldfinger (1964), Became James Bond’s signature car.",
-    imageSrc: "/images/aston.png",
-  },
-  {
     id: "testarossa",
     name: "Testarossa 1997",
     brand: "Ferrari",
@@ -78,28 +78,6 @@ export const cars: Car[] = [
     details:
       "Famous from Miami Vice (1984 TV), later re-popularized through The Wolf of Wall Street.",
     imageSrc: "/images/ferrari.png",
-  },
-  {
-    id: "mustang",
-    name: "Mustang Boss 429",
-    brand: "Ford",
-    gear: "Manual",
-    priceUSD: 310000,
-    color: "Grabber Steel",
-    details:
-      "First appeared in John Wick (2014). Driven by John Wick (Keanu Reeves).",
-    imageSrc: "/images/mustang.png",
-  },
-  {
-    id: "chevy",
-    name: "Chevy Camaro SS",
-    brand: "Chevrolet",
-    gear: "Manual",
-    priceUSD: 95000,
-    color: "Black Matt",
-    details:
-      "Appeared in multiple films; iconic as a first-gen American muscle car.",
-    imageSrc: "/images/chevy.png",
   },
   {
     id: "spinner",
@@ -113,6 +91,28 @@ export const cars: Car[] = [
     imageSrc: "/images/spinner.png",
   },
   {
+    id: "chevy",
+    name: "Chevy Camaro SS",
+    brand: "Chevrolet",
+    gear: "Manual",
+    priceUSD: 95000,
+    color: "Black Matt",
+    details:
+      "Appeared in multiple films; iconic as a first-gen American muscle car.",
+    imageSrc: "/images/chevy.png",
+  },
+  {
+    id: "mach-five",
+    name: "Mach Five",
+    brand: "Speed Motors",
+    gear: "Manual",
+    priceUSD: 2800000,
+    color: "Pure White",
+    details:
+      "Iconic car from Speed Racer (1967 anime, 2008 film), Known for advanced gadgets.",
+    imageSrc: "/images/mach_five.png",
+  },
+  {
     id: "nsx",
     name: "NSX Roadster",
     brand: "Acura",
@@ -122,6 +122,17 @@ export const cars: Car[] = [
     details:
       "Featured in The Avengers (2012). Represented Tony Stark’s modern, tech-focused persona.",
     imageSrc: "/images/acura.png",
+  },
+  {
+    id: "mustang",
+    name: "Mustang Boss 429",
+    brand: "Ford",
+    gear: "Manual",
+    priceUSD: 310000,
+    color: "Grabber Steel",
+    details:
+      "First appeared in John Wick (2014). Driven by John Wick (Keanu Reeves).",
+    imageSrc: "/images/mustang.png",
   },
   {
     id: "light-cycle",

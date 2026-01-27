@@ -1,69 +1,81 @@
 @import "tailwindcss";
 
 @theme {
-  /* Olive – Light backgrounds */
-  --olive-50:  #FEF1EF;
-  --olive-100: #E8EDEB;
-  --olive-200: #E2E8E5;
-  --olive-300: #D7E0DB;
-  /* Olive – Borders light */
-  --olive-500: #C0CEC7;
-  --olive-700: #9EB3A9;
-  /* Olive – Text light */
-  --olive-0:   #222B26;
-  --olive-950: #5A7266;
-  --olive-900: #9EB3A8;
-  /* Brand */
-  --teal-950: #0C413A;
+  /* sand – Dark backgrounds */
+  --sand-50: #100F0F;
+  --sand-100: #151513;
+  --sand-200: #1B1A18;
+  --sand-300: #2B2927;
+  /* sand – Borders dark */
+  --sand-300: #2B2927;
+  --sand-400: #3B3935;
+  --sand-500: #4B4844;
+  /* sand – Text dark */
+  --sand-0: #E7E6E4;
+  --sand-950: #CFCCC9;
+  --sand-700: #76716B;
+  --sand-500: #4B4844;
+  /* Brand stays same */
+  --red-600: #F01C05;
+  --red-16: #35130F;
 
   /* Background */
-  --color-bg-base:          var(--olive-300);
-  --color-bg-surface:       var(--olive-200);
-  --color-bg-surface-hover: var(--olive-100);
-  --color-bg-elevated:      var(--olive-50);
+  --color-bg-base: var(--sand-50);
+  --color-bg-surface: var(--sand-100);
+  --color-bg-surface-hover: var(--sand-200);
+  --color-bg-elevated: var(--sand-300);
   /* Border */
-  --color-border-base:      var(--olive-700);
-  --color-border-secondary: var(--olive-500);
+  --color-border-primary: var(--sand-400);
+  --color-border-secondary: var(--sand-300);
+  --color-border-hover: var(--sand-500);
   /* Text */
-  --color-text-primary:   var(--olive-0);
-  --color-text-secondary: var(--olive-950);
-  --color-text-tertiary:  var(--olive-900);
+  --color-text-primary: var(--sand-0);
+  --color-text-secondary: var(--sand-950);
+  --color-text-tertiary: var(--sand-700);
+  --color-text-inactive: var(--sand-500);
   /* Brand */
-  --color-brand-primary: var(--teal-950);
+  --color-brand-primary: var(--red-600);
+  --color-brand-text: var(--sand-100);
+  --color-brand-opacity16: var(--red-16);
 }
 
-@media (prefers-color-scheme: dark) {
-  @theme {
-    /* Olive – Dark backgrounds */
-    --olive-50:  #0F1010;
-    --olive-100: #131615;
-    --olive-200: #181B19;
-    --olive-300: #212624;
-    /* Olive – Borders dark */
-    --olive-500: #353B38;
-    --olive-700: #515C57;
-    /* Olive – Text dark */
-    --olive-0:   #D6DBD9;
-    --olive-950: #939F99;
-    --olive-900: #515C57;
-    /* Brand stays same */
-    --teal-950: #0C413A;
+.light {
+  /* sand – light backgrounds */
+  --sand-50: #FAFAF9;
+  --sand-100: #F6F5F4;
+  --sand-200: #F1F0EE;
+  --sand-300: #E8E6E3;
+  /* sand – Borders light */
+  --sand-400: #DEDCD8;
+  --sand-500: #D5D2CD;
+  --sand-600: #C7C3BD;
+  /* sand – Text light */
+  --sand-0: #534E46;
+  --sand-950: #6E675E;
+  --sand-700: #B9B3AC;
+  --sand-500: #D5D2CD;
+  /* Brand stays same */
+  --red-500: #FA270F;
+  --red-16: #EAC7C1;
 
-    /* Background */
-    --color-bg-base:          var(--olive-50);
-    --color-bg-surface:       var(--olive-100);
-    --color-bg-surface-hover: var(--olive-200);
-    --color-bg-elevated:      var(--olive-300);
-    /* Border */
-    --color-border-base:      var(--olive-700);
-    --color-border-secondary: var(--olive-500);
-    /* Text */
-    --color-text-primary:   var(--olive-0);
-    --color-text-secondary: var(--olive-950);
-    --color-text-tertiary:  var(--olive-900);
-    /* Brand */
-    --color-brand-primary: var(--teal-950);
-  }
+  /* Background */
+  --color-bg-base: var(--sand-300);
+  --color-bg-surface: var(--sand-200);
+  --color-bg-surface-hover: var(--sand-100);
+  --color-bg-elevated: var(--sand-50);
+  /* Border */
+  --color-border-primary: var(--sand-400);
+  --color-border-secondary: var(--sand-500);
+  --color-border-hover: var(--sand-600);
+  /* Text */
+  --color-text-primary: var(--sand-0);
+  --color-text-secondary: var(--sand-950);
+  --color-text-tertiary: var(--sand-700);
+  --color-text-inactive: var(--sand-500);
+  /* Brand */
+  --color-brand-primary: var(--red-500);
+  --color-brand-text: var(--sand-100);
+  --color-brand-opacity16: var(--red-16);
 }
 
 .font-l500 {
@@ -73,6 +85,7 @@
   line-height: 1.4;
   letter-spacing: 0em;
 }
+
 .font-l600 {
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 600;
@@ -80,6 +93,7 @@
   line-height: 1.4;
   letter-spacing: 0em;
 }
+
 .font-m500 {
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 500;
@@ -87,6 +101,7 @@
   line-height: 1.44;
   letter-spacing: 0em;
 }
+
 .font-m600 {
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 600;
@@ -94,6 +109,7 @@
   line-height: 1.44;
   letter-spacing: 0em;
 }
+
 .font-s500 {
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 500;
@@ -101,6 +117,7 @@
   line-height: 1.5;
   letter-spacing: 0.005em;
 }
+
 .font-s600 {
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 600;
@@ -108,6 +125,7 @@
   line-height: 1.5;
   letter-spacing: 0.005em;
 }
+
 .font-xs500 {
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 500;
@@ -115,6 +133,7 @@
   line-height: 1.43;
   letter-spacing: 0.01em;
 }
+
 .font-xs600 {
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 600;
@@ -122,6 +141,7 @@
   line-height: 1.43;
   letter-spacing: 0.01em;
 }
+
 .font-2xs500 {
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 500;
@@ -129,6 +149,7 @@
   line-height: 1.33;
   letter-spacing: 0.01em;
 }
+
 .font-2xs600 {
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 600;
@@ -137,6 +158,27 @@
   letter-spacing: 0.01em;
 }
 
-.rounded-5xl{
-  border-radius: 40px;
+.font-3xs500 {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: 0.015em;
+}
+
+.font-3xs600 {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1.4;
+
+  letter-spacing: 0.015em;
+}
+
+@layer base {
+
+  html,
+  body {
+    @apply bg-bg-base;
+  }
 }
