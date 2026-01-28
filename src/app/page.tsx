@@ -31,7 +31,6 @@ export default function Home() {
     });
   }
 
-  // ✅ Filter by name OR brand (case-insensitive)
   const filteredCars = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return cars;
