@@ -7,6 +7,7 @@ import { SunIcon, MoonIcon } from "../../public/icons";
 import { useEffect, useMemo, useState } from "react";
 import SubmitSection from "./molecules/SubmitSection/SubmitSection";
 import DetailSection from "./molecules/DetailSection/DetailSection";
+import { AnimatePresence, motion } from "framer-motion";
 
 type Theme = "dark" | "light";
 
@@ -119,6 +120,13 @@ export default function Home() {
     };
     const next = [newCar, ...sessionCars];
     saveSessionCars(next);
+
+    // Remove 'await' since 'handleSubmit' is not async
+    setTimeout(() => {
+      setIsCreating(false);
+      resetForm();
+    }, 900);
+    return; // Prevent the code below from running immediately
     setIsCreating(false);
     resetForm();
   }
@@ -127,7 +135,7 @@ export default function Home() {
     <main className="min-h-screen items-center flex flex-col mb-12 gap-12">
       {/* Top bar */}
       <div className="w-2/5 mt-73">
-        <div className="grid grid-cols-[auto_1fr_auto] items-center gap-2">
+        <div className="grid grid-cols-[auto_1fr_235px]  items-center gap-2">
           {/* left */}
           <button
             type="button"
@@ -141,55 +149,96 @@ export default function Home() {
               <MoonIcon className="text-text-inactive hover:text-text-tertiary transition-colors ease-in" />
             )}
           </button>
-
           {/* middle */}
           <div className="min-w-0">
             <SearchBar value={query} onChange={setQuery} />
           </div>
 
           {/* right */}
-          <div className="justify-self-end">
-            {isCreating ? (
-              <SubmitSection
-                onCancel={() => {
-                  setIsCreating(false);
-                  resetForm();
-                }}
-                onSubmit={handleSubmit}
-              />
-            ) : (
-              <CreateButton onClick={() => setIsCreating(true)} />
-            )}
+          <div className="justify-self-base ml-1">
+            <div className="relative h-12 flex">
+              <AnimatePresence mode="wait" initial={false}>
+                {!isCreating ? (
+                  <motion.div
+                    key="create"
+                    className="absolute left-0"
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                  >
+                    <CreateButton onClick={() => setIsCreating(true)} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="submit"
+                    className="absolute right-0"
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                  >
+                    <SubmitSection
+                      onCancel={() => {
+                        setIsCreating(false);
+                        resetForm();
+                      }}
+                      onSubmit={handleSubmit}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
+
         </div>
       </div>
       {/* DetailSection appears when creating */}
-      {isCreating && (
-        <div className="w-3/6 h-30 justify-self-auto flex ">
-          <DetailSection
-            name={form.name}
-            brand={form.brand}
-            color={form.color}
-            priceUSD={form.priceUSD}
-            details={form.details}
-            mode={form.mode}
-            imageFileName={form.imageFileName}
-            onChangeName={(v) => setForm((p) => ({ ...p, name: v }))}
-            onChangeBrand={(v) => setForm((p) => ({ ...p, brand: v }))}
-            onChangeColor={(v) => setForm((p) => ({ ...p, color: v }))}
-            onChangePriceUSD={(v) => setForm((p) => ({ ...p, priceUSD: v }))}
-            onChangeDetails={(v) => setForm((p) => ({ ...p, details: v }))}
-            onChangeMode={(v) => setForm((p) => ({ ...p, mode: v }))}
-            onPickImage={(file, dataUrl) =>
-              setForm((p) => ({
-                ...p,
-                imageDataUrl: dataUrl,
-                imageFileName: file.name,
-              }))
-            }
-          />
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {isCreating && (
+          <motion.div
+            key="detail"
+            className="w-3/6 justify-self-auto  flex overflow-hidden"
+            initial={{ height: 0, opacity: 0, y: -6 }}
+            animate={{ height: "auto", opacity: 1, y: 0 }}
+            exit={{ height: 0, opacity: 0, y: -6 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+          >
+            {/* inner wrapper prevents content from being clipped weirdly */}
+            <motion.div
+              className="w-full h-34 m-1"
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 1 }}
+              exit={{ scaleY: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              style={{ transformOrigin: "top" }}
+            >
+              <DetailSection
+                name={form.name}
+                brand={form.brand}
+                color={form.color}
+                priceUSD={form.priceUSD}
+                details={form.details}
+                mode={form.mode}
+                imageFileName={form.imageFileName}
+                onChangeName={(v) => setForm((p) => ({ ...p, name: v }))}
+                onChangeBrand={(v) => setForm((p) => ({ ...p, brand: v }))}
+                onChangeColor={(v) => setForm((p) => ({ ...p, color: v }))}
+                onChangePriceUSD={(v) => setForm((p) => ({ ...p, priceUSD: v }))}
+                onChangeDetails={(v) => setForm((p) => ({ ...p, details: v }))}
+                onChangeMode={(v) => setForm((p) => ({ ...p, mode: v }))}
+                onPickImage={(file, dataUrl) =>
+                  setForm((p) => ({
+                    ...p,
+                    imageDataUrl: dataUrl,
+                    imageFileName: file.name,
+                  }))
+                }
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       {/* Grid */}
       <section className="w-full">
         <div className="grid grid-cols-4 mx-46 gap-6">

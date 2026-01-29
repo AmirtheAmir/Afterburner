@@ -22,7 +22,7 @@ export const cars: Car[] = [
     color: "Graphite Black",
     details:
       "Armored tactical Batmobile built for extreme urban combat.",
-    imageSrc: "/images/tumbler.png",
+    imageSrc: "/images/tumblerc.png",
   },
   {
     id: "delorean",
@@ -33,7 +33,7 @@ export const cars: Car[] = [
     color: "Stainless Steel",
     details:
       "Appeared in Back to the Future (1985), Modified into a time machine by Doc Brown.",
-    imageSrc: "/images/delorean.png",
+    imageSrc: "/images/deloreanc.png",
   },
   {
     id: "revuelto",
@@ -44,7 +44,7 @@ export const cars: Car[] = [
     color: "Nero Noctis Black",
     details:
       "Hybrid V12 flagship redefining Lamborghini performance.",
-    imageSrc: "/images/lamborghini.png",
+    imageSrc: "/images/lamborghinic.png",
   },
   {
     id: "db5",
@@ -55,7 +55,7 @@ export const cars: Car[] = [
     color: "Silver Birch",
     details:
     "Classic British grand tourer made famous by James Bond.",
-    imageSrc: "/images/aston_martin.png",
+    imageSrc: "/images/aston_martinc.png",
   },
   {
     id: "optimus",
@@ -66,7 +66,7 @@ export const cars: Car[] = [
     color: "Midnight Cyber Black",
     details:
       "Transformer leader disguised as a heavy-duty truck.",
-    imageSrc: "/images/peterbilt.png",
+    imageSrc: "/images/peterbiltc.png",
   },
   {
     id: "testarossa",
@@ -77,7 +77,7 @@ export const cars: Car[] = [
     color: "Pearl White",
     details:
       "Famous from Miami Vice (1984 TV) driven by Sonny Crockett.",
-    imageSrc: "/images/ferrari.png",
+    imageSrc: "/images/ferraric.png",
   },
   {
     id: "spinner",
@@ -88,7 +88,7 @@ export const cars: Car[] = [
     color: "Dark Blue Accents",
     details:
       "Futuristic flying police vehicle which was introduced in Blade Runner.",
-    imageSrc: "/images/lapd.png",
+    imageSrc: "/images/lapdc.png",
   },
   {
     id: "chevy",
@@ -99,7 +99,7 @@ export const cars: Car[] = [
     color: "Inferno Tangerine",
     details:
       "Classic Camaro rebuilt with modern supercharged power.",
-    imageSrc: "/images/chevrolet.png",
+    imageSrc: "/images/chevroletc.png",
   },
   {
     id: "mach-six",
@@ -110,7 +110,7 @@ export const cars: Car[] = [
     color: "Pure White",
     details:
       "Advanced racing machine with adaptive combat technology.",
-    imageSrc: "/images/speed_motor.png",
+    imageSrc: "/images/speed_motorc.png",
   },
   {
     id: "gt40",
@@ -121,7 +121,7 @@ export const cars: Car[] = [
     color: "Fog Silver",
     details:
       "Legendary endurance racer that defeated Ferrari at Le Mans.",
-    imageSrc: "/images/ford.png",
+    imageSrc: "/images/fordc.png",
   },
   {
     id: "mustang",
@@ -132,7 +132,7 @@ export const cars: Car[] = [
     color: "Obsidian Graphite",
     details:
       "Legendary muscle car built for NASCAR homologation.",
-    imageSrc: "/images/ford_mustang.png",
+    imageSrc: "/images/ford_mustangc.png",
   },
   {
     id: "humvee",
@@ -143,6 +143,6 @@ export const cars: Car[] = [
     color: "NATO Tactical Black",
     details:
       "Military-grade off-road vehicle built for combat terrain.",
-    imageSrc: "/images/humvee.png",
+    imageSrc: "/images/humveec.png",
   },
 ];

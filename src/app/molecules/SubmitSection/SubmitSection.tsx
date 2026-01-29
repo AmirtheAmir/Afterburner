@@ -1,9 +1,10 @@
 import SubmitButton from "../../components/SubmitButton/SubmitButton";
 import CancelButton from "../../components/CancelButton/CancelButton";
 
+
 type Props = {
   onCancel: () => void;
-  onSubmit?: () => void;
+  onSubmit?: () => void | Promise<void>;
 };
 
 export default function SubmitSection({ onCancel, onSubmit }: Props) {

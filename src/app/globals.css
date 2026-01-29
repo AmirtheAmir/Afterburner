@@ -182,3 +182,8 @@
     @apply bg-bg-base;
   }
 }
+
+* {
+  scrollbar-width: thin; /* thin ≈ 6px */
+  scrollbar-color: var(--color-bg-elevated) transparent;
+}

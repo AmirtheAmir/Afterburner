@@ -8,7 +8,7 @@ type Props = {
 export default function TransmissionToggle({ value, onChange }: Props) {
   return (
     <div className="grid grid-cols-2 items-center gap-3">
-      <div className="p-1 rounded-full ring-2 ring-border-secondary flex items-center">
+      <div className="p-1 rounded-full ring-2 gap-1 ring-border-secondary flex items-center">
         <button
           type="button"
           onClick={() => onChange("manual")}

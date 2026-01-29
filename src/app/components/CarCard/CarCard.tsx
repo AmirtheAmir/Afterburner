@@ -15,7 +15,7 @@ export function CarCard({ car }: { car: Car }) {
                     src={car.imageSrc}
                     alt={car.name}
                     fill
-                    className="object-cover object-left scale-110 "
+                    className="object-cover object-left"
                     priority={false}
                 />
             </div>
