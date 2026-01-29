@@ -41,7 +41,7 @@ export const cars: Car[] = [
     brand: "Lamborghini",
     gear: "Auto",
     priceUSD: 660000,
-    color: "Nero Noctis Black",
+    color: "Noctis Black",
     details:
       "Hybrid V12 flagship redefining Lamborghini performance.",
     imageSrc: "/images/lamborghinic.png",
@@ -63,7 +63,7 @@ export const cars: Car[] = [
     brand: "Peterbilt 379",
     gear: "Auto",
     priceUSD: 179000,
-    color: "Midnight Cyber Black",
+    color: "Midnight Black",
     details:
       "Transformer leader disguised as a heavy-duty truck.",
     imageSrc: "/images/peterbiltc.png",
@@ -85,7 +85,7 @@ export const cars: Car[] = [
     brand: "LAPD",
     gear: "Auto",
     priceUSD: 550000,
-    color: "Dark Blue Accents",
+    color: "Dark Blue",
     details:
       "Futuristic flying police vehicle which was introduced in Blade Runner.",
     imageSrc: "/images/lapdc.png",
@@ -140,7 +140,7 @@ export const cars: Car[] = [
     brand: "AM General",
     gear: "Auto",
     priceUSD: 260000,
-    color: "NATO Tactical Black",
+    color: "NATO Gray",
     details:
       "Military-grade off-road vehicle built for combat terrain.",
     imageSrc: "/images/humveec.png",

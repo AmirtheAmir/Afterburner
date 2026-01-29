@@ -1,141 +1,58 @@
 "use client";
-import SearchBar from "./components/SearchBar/SearchBar";
-import CreateButton from "./components/CreateButton/CreateButton";
-import { CarCard } from "./components/CarCard/CarCard";
-import { cars, type Car } from "../data/cars";
-import { SunIcon, MoonIcon } from "../../public/icons";
-import { useEffect, useMemo, useState } from "react";
-import SubmitSection from "./molecules/SubmitSection/SubmitSection";
-import DetailSection from "./molecules/DetailSection/DetailSection";
+
+import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
-type Theme = "dark" | "light";
-
-type CreateCarForm = {
-  name: string;
-  brand: string;
-  color: string;
-  priceUSD: string;
-  details: string;
-  mode: "manual" | "auto";
-  imageDataUrl: string;
-  imageFileName: string;
-};
+import { cars, type Car } from "@/data/cars";
+import { SunIcon, MoonIcon } from "../../public/icons";
+import { SearchBar, CreateButton, CarCard } from "@/app/components";
+import { SubmitSection, DetailSection } from "@/app/molecules";
+import {
+  useTheme,
+  useCreateCarForm,
+  useSessionStorageState,
+  useFilteredCars,
+} from "@/hooks";
 
 const SESSION_KEY = "sessionCars";
 
 export default function Home() {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const { theme, toggleTheme } = useTheme();
+
   const [query, setQuery] = useState("");
   const [isCreating, setIsCreating] = useState(false);
 
-  const [sessionCars, setSessionCars] = useState<Car[]>([]);
+  const [sessionCars, setSessionCars] = useSessionStorageState<Car[]>(
+    SESSION_KEY,
+    []
+  );
 
-  const [form, setForm] = useState<CreateCarForm>({
-    name: "",
-    brand: "",
-    color: "",
-    priceUSD: "",
-    details: "",
-    mode: "manual",
-    imageDataUrl: "",
-    imageFileName: "",
-  });
+  const { form, actions } = useCreateCarForm();
 
-  useEffect(() => {
-    const saved = localStorage.getItem("theme") as Theme | null;
-    const initialTheme: Theme = saved ?? "dark";
-    document.documentElement.classList.toggle("light", initialTheme === "light");
-  }, []);
+  const allCars = useMemo(() => [...sessionCars, ...cars], [sessionCars]);
+  const filteredCars = useFilteredCars(allCars, query);
 
-  useEffect(() => {
-    const raw = sessionStorage.getItem(SESSION_KEY);
-    if (!raw) return;
-    try {
-      const parsed = JSON.parse(raw) as Car[];
-      // Avoid calling setState synchronously in the effect body per React best practices.
-      // Instead, use a microtask to defer the update and prevent cascading renders.
-      Promise.resolve().then(() => setSessionCars(parsed));
-    } catch {
-    }
-  }, []);
-
-  function toggleTheme() {
-    setTheme((prev) => {
-      const next: Theme = prev === "dark" ? "light" : "dark";
-      document.documentElement.classList.toggle("light", next === "light");
-      localStorage.setItem("theme", next);
-      return next;
-    });
-  }
-
-  const allCars = useMemo(() => {
-    return [...sessionCars, ...cars];
-  }, [sessionCars]);
-
-  const filteredCars = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return allCars;
-    return allCars.filter((car) => {
-      return (
-        car.name.toLowerCase().includes(q) ||
-        car.brand.toLowerCase().includes(q)
-      );
-    });
-  }, [query, allCars]);
-
-  function resetForm() {
-    setForm({
-      name: "",
-      brand: "",
-      color: "",
-      priceUSD: "",
-      details: "",
-      mode: "manual",
-      imageDataUrl: "",
-      imageFileName: "",
-    });
-  }
-
-  function saveSessionCars(next: Car[]) {
-    setSessionCars(next);
-    sessionStorage.setItem(SESSION_KEY, JSON.stringify(next));
+  function closeCreate() {
+    setIsCreating(false);
+    actions.reset();
   }
 
   function handleSubmit() {
-    if (!form.name.trim() || !form.brand.trim()) return;
+    const newCar = actions.toCar();
+    if (!newCar) return;
 
-    const priceNumber = Number(String(form.priceUSD).replace(/[^\d]/g, ""));
-    const safePrice = Number.isFinite(priceNumber) ? priceNumber : 0;
+    setSessionCars((prev) => [newCar, ...prev]);
 
-    const newCar: Car = {
-      id: `session-${crypto.randomUUID()}`,
-      name: form.name.trim(),
-      brand: form.brand.trim(),
-      gear: form.mode === "manual" ? "Manual" : "Auto",
-      priceUSD: safePrice,
-      color: form.color.trim() || "—",
-      details: form.details.trim() || "—",
-      imageSrc: form.imageDataUrl || "/images/placeholder.png", // add a placeholder file if you want
-    };
-    const next = [newCar, ...sessionCars];
-    saveSessionCars(next);
-
-    // Remove 'await' since 'handleSubmit' is not async
+    // keep your animation timing vibe
     setTimeout(() => {
-      setIsCreating(false);
-      resetForm();
+      closeCreate();
     }, 900);
-    return; // Prevent the code below from running immediately
-    setIsCreating(false);
-    resetForm();
   }
 
   return (
     <main className="min-h-screen items-center flex flex-col mb-12 gap-12">
       {/* Top bar */}
       <div className="w-2/5 mt-73">
-        <div className="grid grid-cols-[auto_1fr_235px]  items-center gap-2">
+        <div className="grid grid-cols-[auto_1fr_235px] items-center gap-2">
           {/* left */}
           <button
             type="button"
@@ -149,6 +66,7 @@ export default function Home() {
               <MoonIcon className="text-text-inactive hover:text-text-tertiary transition-colors ease-in" />
             )}
           </button>
+
           {/* middle */}
           <div className="min-w-0">
             <SearchBar value={query} onChange={setQuery} />
@@ -178,27 +96,21 @@ export default function Home() {
                     exit={{ opacity: 0, y: 6 }}
                     transition={{ duration: 0.18, ease: "easeOut" }}
                   >
-                    <SubmitSection
-                      onCancel={() => {
-                        setIsCreating(false);
-                        resetForm();
-                      }}
-                      onSubmit={handleSubmit}
-                    />
+                    <SubmitSection onCancel={closeCreate} onSubmit={handleSubmit} />
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
           </div>
-
         </div>
       </div>
+
       {/* DetailSection appears when creating */}
       <AnimatePresence initial={false}>
         {isCreating && (
           <motion.div
             key="detail"
-            className="w-3/6 justify-self-auto  flex overflow-hidden"
+            className="w-3/6 justify-self-auto flex overflow-hidden"
             initial={{ height: 0, opacity: 0, y: -6 }}
             animate={{ height: "auto", opacity: 1, y: 0 }}
             exit={{ height: 0, opacity: 0, y: -6 }}
@@ -221,24 +133,19 @@ export default function Home() {
                 details={form.details}
                 mode={form.mode}
                 imageFileName={form.imageFileName}
-                onChangeName={(v) => setForm((p) => ({ ...p, name: v }))}
-                onChangeBrand={(v) => setForm((p) => ({ ...p, brand: v }))}
-                onChangeColor={(v) => setForm((p) => ({ ...p, color: v }))}
-                onChangePriceUSD={(v) => setForm((p) => ({ ...p, priceUSD: v }))}
-                onChangeDetails={(v) => setForm((p) => ({ ...p, details: v }))}
-                onChangeMode={(v) => setForm((p) => ({ ...p, mode: v }))}
-                onPickImage={(file, dataUrl) =>
-                  setForm((p) => ({
-                    ...p,
-                    imageDataUrl: dataUrl,
-                    imageFileName: file.name,
-                  }))
-                }
+                onChangeName={actions.setName}
+                onChangeBrand={actions.setBrand}
+                onChangeColor={actions.setColor}
+                onChangePriceUSD={actions.setPriceUSD}
+                onChangeDetails={actions.setDetails}
+                onChangeMode={actions.setMode}
+                onPickImage={actions.pickImage}
               />
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
       {/* Grid */}
       <section className="w-full">
         <div className="grid grid-cols-4 mx-46 gap-6">
@@ -246,6 +153,7 @@ export default function Home() {
             <CarCard key={car.id} car={car} />
           ))}
         </div>
+
         {filteredCars.length === 0 && (
           <p className="text-text-tertiary font-s500 text-center mt-8">
             No cars found 🤷
