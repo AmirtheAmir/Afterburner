@@ -5,3 +5,7 @@ export { default as PlusIcon } from "./plus.svg";
 export { default as PriceIcon } from "./price.svg";
 export { default as SearchIcon } from "./search.svg";
 export { default as SunIcon } from "./sun.svg";
+export { default as CheckIcon } from "./check.svg";
+export { default as CloseIcon } from "./close.svg";
+export { default as DollarIcon } from "./dollar.svg";
+export { default as UploadIcon } from "./upload.svg";

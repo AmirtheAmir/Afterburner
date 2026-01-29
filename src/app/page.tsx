@@ -5,6 +5,8 @@ import { CarCard } from "./components/CarCard/CarCard";
 import { cars } from "../data/cars";
 import { SunIcon, MoonIcon } from "../../public/icons";
 import { useEffect, useState, useMemo } from "react";
+import SubmitSection from "./molecules/SubmitSection/SubmitSection";
+import DetailSection from "./molecules/DetailSection/DetailSection";
 
 type Theme = "dark" | "light"
 
@@ -12,6 +14,8 @@ export default function Home() {
   const [theme, setTheme] = useState<Theme>("dark");
 
   const [query, setQuery] = useState('');
+
+  const [isCreating, setIsCreating] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem('theme') as Theme | null;
@@ -46,25 +50,43 @@ export default function Home() {
   return (
     <main className="min-h-screen items-center flex flex-col mb-12 gap-12">
       {/* Top bar */}
-      <div className="flex justify-between w-1/3 mt-73">
-        <div className="flex items-center gap-2 w-full">
-          <div className="">
-            <button type="button" onClick={toggleTheme} aria-label="Toggle theme" className="p-3 rounded-full flex-1 flex items-center justify-center  ">
-              {theme === "dark" ? (
-                <SunIcon className="text-text-inactive hover:text-text-tertiary transition-colors ease-in" />
-              ) : (
-                <MoonIcon className="text-text-inactive hover:text-text-tertiary transition-colors ease-in" />
-              )}
-            </button>
-          </div>
-          <div className="flex flex-2">
+      <div className="w-2/5 mt-73">
+        <div className="grid grid-cols-[auto_1fr_auto] items-center gap-2">
+          {/* left */}
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="p-3 rounded-full inline-flex items-center justify-center"
+          >
+            {theme === "dark" ? (
+              <SunIcon className="text-text-inactive hover:text-text-tertiary transition-colors ease-in" />
+            ) : (
+              <MoonIcon className="text-text-inactive hover:text-text-tertiary transition-colors ease-in" />
+            )}
+          </button>
+
+          {/* middle */}
+          <div className="min-w-0">
             <SearchBar value={query} onChange={setQuery} />
           </div>
-          <div className="">
-            <CreateButton />
+
+          {/* right */}
+          <div className="justify-self-end">
+            {isCreating ? (
+              <SubmitSection onCancel={() => setIsCreating(false)} onSubmit={() => { }} />
+            ) : (
+              <CreateButton onClick={() => setIsCreating(true)} />
+            )}
           </div>
         </div>
       </div>
+      {/* DetailSection appears when creating */}
+      {isCreating && (
+        <div className="w-3/6">
+          <DetailSection />
+        </div>
+      )}
       {/* Grid */}
       <section className="w-full">
         <div className="grid grid-cols-4 mx-46 gap-6">
