@@ -9,7 +9,7 @@ export default function CancelButton({ onClick }: Props) {
     <button
       type="button"
       onClick={onClick}
-      className="py-3 pr-4.5 pl-3 hover:bg-bg-surface transition-colors ease-in rounded-full ring-1 ring-text-inactive  text-text-inactive flex items-center gap-1.5 font-s500"
+      className="py-3 pr-4.5 pl-3 hover:bg-bg-surface transition-colors ease-in rounded-full ring-2 bg-transparent ring-text-inactive cursor-pointer text-text-inactive flex items-center gap-1.5 font-s500"
     >
       <CloseIcon className="text-text-inactive" />
       Cancel

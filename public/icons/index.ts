@@ -9,3 +9,4 @@ export { default as CheckIcon } from "./check.svg";
 export { default as CloseIcon } from "./close.svg";
 export { default as DollarIcon } from "./dollar.svg";
 export { default as UploadIcon } from "./upload.svg";
+export { default as SuccessIcon } from "./success.svg";
