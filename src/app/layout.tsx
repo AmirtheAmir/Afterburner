@@ -7,12 +7,10 @@ const inter = Inter({
   display: "swap",
   variable: "--font-inter", 
 });
-
 export const metadata: Metadata = {
   title: "Afterburn",
   description: "Card Information Made Easy",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{

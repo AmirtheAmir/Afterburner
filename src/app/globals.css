@@ -176,7 +176,6 @@
 }
 
 @layer base {
-
   html,
   body {
     @apply bg-bg-base;
@@ -186,4 +185,50 @@
 * {
   scrollbar-width: thin; /* thin ≈ 6px */
   scrollbar-color: var(--color-bg-elevated) transparent;
+}
+
+/* Mobile S (small phones) */
+@media (max-width: 320px) {}
+
+/* Mobile M (Android baseline) */
+@media (max-width: 360px) {}
+
+/* Mobile L (modern iPhones) */
+@media (max-width: 390px) {}
+
+/* Tablet */
+@media (max-width: 768px) {}
+
+/* Laptop */
+@media (max-width: 1024px) {}
+
+/* Desktop */
+@media (max-width: 1280px) {}
+
+/* Large Desktop */
+@media (max-width: 1440px) {}
+
+/* Ultra Wide (your custom breakpoint) */
+@media (max-width: 1735px) {}
+
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1735px) {
+  .car-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 1354px) {
+  .car-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 960px) {
+  .car-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

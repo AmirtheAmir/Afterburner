@@ -4,7 +4,6 @@ type Props = {
   value: string;
   onChange: (value: string) => void;
 };
-
 export default function SearchBar({ value, onChange }: Props) {
   return (
     <div className="p-3 rounded-full hover:bg-bg-surface-hover transition-colors ease-in bg-bg-surface flex items-center gap-3 focus-within:ring-1 focus-within:ring-border-primary">

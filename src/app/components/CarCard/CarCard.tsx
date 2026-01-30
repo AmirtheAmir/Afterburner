@@ -6,11 +6,10 @@ import { GearIcon, PriceIcon, BrushIcon } from "../../../../public/icons";
 function formatUSD(n: number) {
     return n.toLocaleString("en-US");
 }
-
 export function CarCard({ car }: { car: Car }) {
     return (
-        <article className="group rounded-3xl p-2 bg-bg-surface ring ring-border-primary flex flex-col gap-2">
-            <div className="relative aspect-354/283 overflow-hidden rounded-2xl">
+        <article className="group rounded-3xl p-2 bg-bg-surface ring-2 ring-border-primary flex flex-col gap-3">
+            <div className="relative w-full aspect-[404/304] overflow-hidden rounded-2xl">
                 <Image
                     src={car.imageSrc}
                     alt={car.name}

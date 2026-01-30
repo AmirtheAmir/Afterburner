@@ -65,7 +65,7 @@ export const cars: Car[] = [
     priceUSD: 179000,
     color: "Midnight Black",
     details:
-      "Transformer leader disguised as a heavy-duty truck.",
+      "Transformer leader disguised as a heavy-duty truck from teh series.",
     imageSrc: "/images/peterbiltc.png",
   },
   {
@@ -131,7 +131,7 @@ export const cars: Car[] = [
     priceUSD: 310000,
     color: "Obsidian Graphite",
     details:
-      "Legendary muscle car built for NASCAR homologation.",
+      "Muscle car built for NASCAR homologation feature in multiple films.",
     imageSrc: "/images/ford_mustangc.png",
   },
   {
@@ -142,7 +142,7 @@ export const cars: Car[] = [
     priceUSD: 260000,
     color: "NATO Gray",
     details:
-      "Military-grade off-road vehicle built for combat terrain.",
+      "Military-grade off-road vehicle built for combat terrain and army use.",
     imageSrc: "/images/humveec.png",
   },
 ];

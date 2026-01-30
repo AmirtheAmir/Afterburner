@@ -1,5 +1,4 @@
 "use client";
-
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cars, type Car } from "@/data/cars";
@@ -12,44 +11,33 @@ import {
   useSessionStorageState,
   useFilteredCars,
 } from "@/hooks";
-
 const SESSION_KEY = "sessionCars";
-
 export default function Home() {
   const { theme, toggleTheme } = useTheme();
-
   const [query, setQuery] = useState("");
   const [isCreating, setIsCreating] = useState(false);
-
   const [sessionCars, setSessionCars] = useSessionStorageState<Car[]>(
     SESSION_KEY,
     []
   );
-
   const { form, actions } = useCreateCarForm();
-
   const allCars = useMemo(() => [...sessionCars, ...cars], [sessionCars]);
   const filteredCars = useFilteredCars(allCars, query);
-
   function closeCreate() {
     setIsCreating(false);
     actions.reset();
   }
-
   function handleSubmit() {
     const newCar = actions.toCar();
     if (!newCar) return;
-
     setSessionCars((prev) => [newCar, ...prev]);
-
     // keep your animation timing vibe
     setTimeout(() => {
       closeCreate();
     }, 900);
   }
-
   return (
-    <main className="min-h-screen items-center flex flex-col mb-12 gap-12">
+    <main className="min-h-screen items-center flex flex-col mb-24 gap-12">
       {/* Top bar */}
       <div className="w-2/5 mt-73">
         <div className="grid grid-cols-[auto_1fr_235px] items-center gap-2">
@@ -66,12 +54,10 @@ export default function Home() {
               <MoonIcon className="text-text-inactive hover:text-text-tertiary transition-colors ease-in" />
             )}
           </button>
-
           {/* middle */}
           <div className="min-w-0">
             <SearchBar value={query} onChange={setQuery} />
           </div>
-
           {/* right */}
           <div className="justify-self-base ml-1">
             <div className="relative h-12 flex">
@@ -104,7 +90,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       {/* DetailSection appears when creating */}
       <AnimatePresence initial={false}>
         {isCreating && (
@@ -145,10 +130,9 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
-
       {/* Grid */}
       <section className="w-full">
-        <div className="grid grid-cols-4 mx-46 gap-6">
+        <div className="grid car-grid mx-24 gap-4">
           {filteredCars.map((car) => (
             <CarCard key={car.id} car={car} />
           ))}

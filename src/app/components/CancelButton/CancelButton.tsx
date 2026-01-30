@@ -3,7 +3,6 @@ import { CloseIcon } from "../../../../public/icons";
 type Props = {
   onClick?: () => void;
 };
-
 export default function CancelButton({ onClick }: Props) {
   return (
     <button

@@ -1,7 +1,6 @@
 "use client";
 import { DollarIcon } from "../../../../public/icons";
 import { useId, useRef, useState } from "react";
-
 type Props = {
   label: string;
   value: string;
@@ -14,7 +13,6 @@ type Props = {
   showCounter?: boolean;    // true for Detail
   numericOnly?: boolean;    // true for Price
 };
-
 export default function InputPill({
   label,
   value,
@@ -32,18 +30,14 @@ export default function InputPill({
 
   function handleChange(next: string) {
     let v = next;
-
     if (numericOnly) {
       v = v.replace(/[^\d]/g, "");
     }
-
     if (typeof maxLength === "number") {
       v = v.slice(0, maxLength);
     }
-
     onChange(v);
   }
-
   return (
     <div className="flex flex-col gap-2">
       <div
@@ -78,7 +72,6 @@ export default function InputPill({
           {endAdornment ? <DollarIcon className="text-text-inactive" /> : null}
         </div>
       </div>
-
       {/* Counter under input (only when focused) */}
       {showCounter && typeof maxLength === "number" && focused && (
         <div className="  px-4 font-3xs500 flex justify-end text-text-inactive">

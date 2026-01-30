@@ -2,23 +2,17 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { CheckIcon, SuccessIcon24 } from "../../../../public/icons";
 import { useState } from "react";
-
 type Props = {
     onClick?: () => void | Promise<void>;
     disabled?: boolean;
 };
-
 type Status = "idle" | "loading" | "success";
-
 export default function SubmitButton({ onClick, disabled }: Props) {
     const [status, setStatus] = useState<Status>("idle");
-
     const isBusy = status !== "idle";
     const isDisabled = disabled || isBusy;
-
     async function handleClick() {
         if (isDisabled) return;
-
         try {
             setStatus("loading");
 
@@ -34,7 +28,6 @@ export default function SubmitButton({ onClick, disabled }: Props) {
             setStatus("idle");
         }
     }
-
     return (
         <motion.button
             type="button"
@@ -103,7 +96,6 @@ export default function SubmitButton({ onClick, disabled }: Props) {
         </motion.button>
     );
 }
-
 function wait(ms: number) {
     return new Promise<void>((r) => setTimeout(r, ms));
 }

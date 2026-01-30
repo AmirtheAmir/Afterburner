@@ -4,7 +4,6 @@ type Props = {
   value: "manual" | "auto";
   onChange: (v: "manual" | "auto") => void;
 };
-
 export default function TransmissionToggle({ value, onChange }: Props) {
   return (
     <div className="grid grid-cols-2 items-center gap-3">
