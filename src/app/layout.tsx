@@ -10,6 +10,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Afterburn",
   description: "Card Information Made Easy",
+  icons: {
+    icon: "/icon.svg"},
 };
 export default function RootLayout({
   children,
